@@ -1,0 +1,1 @@
+jQuery.sap.declare("invictusbs.ui5.inventory.approve.collectivepr.Component-preload");

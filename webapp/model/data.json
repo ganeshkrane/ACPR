@@ -1,0 +1,78 @@
+{
+	"filters": {
+		"prNumber": "",
+		"purchaseGroups": ["S67", "S68", "S70"],
+		"releaseGroup": "",
+		"releaseCode": "",
+		"plant": "ALL",
+		"vendor": ""
+	},
+	"requisitions": [
+		{
+			"selected": false,
+			"requisition": "10000510",
+			"docType": "NB",
+			"item": "00010",
+			"material": "M-01-A200",
+			"textDetails": "Centrifugal Pump Model X1",
+			"quantity": "5 EA",
+			"netValue": 45000.00,
+			"currency": "ZAR",
+			"vendorCode": "1000234",
+			"vendorName": "Global Pumps",
+			"plant": "0600",
+			"deliveryDate": "25.11.2023",
+			"attachments": "None"
+		},
+		{
+			"selected": false,
+			"requisition": "10000515",
+			"docType": "NB",
+			"item": "00010",
+			"material": "M-01-C500",
+			"textDetails": "Spare Part Kit - Maintenance",
+			"quantity": "2 EA",
+			"netValue": 12500.00,
+			"currency": "ZAR",
+			"vendorCode": "1000234",
+			"vendorName": "Global Pumps",
+			"plant": "0600",
+			"deliveryDate": "28.11.2023",
+			"attachments": "None"
+		},
+		{
+			"selected": false,
+			"requisition": "10000522",
+			"docType": "NB",
+			"item": "00010",
+			"material": "M-02-B100",
+			"textDetails": "Electric Motor 15kW",
+			"quantity": "1 EA",
+			"netValue": 67800.00,
+			"currency": "ZAR",
+			"vendorCode": "1000567",
+			"vendorName": "Tech Supplies",
+			"plant": "1000",
+			"deliveryDate": "30.11.2023",
+			"attachments": "None"
+		},
+		{
+			"selected": false,
+			"requisition": "10000510",
+			"docType": "NB",
+			"item": "00020",
+			"material": "M-05-D300",
+			"textDetails": "Safety Valve Type A",
+			"quantity": "10 EA",
+			"netValue": 15000.00,
+			"currency": "ZAR",
+			"vendorCode": "1000890",
+			"vendorName": "Industrial Parts",
+			"plant": "2000",
+			"deliveryDate": "02.12.2023",
+			"attachments": "None"
+		}
+	],
+	"totalNetValue": 140300.00,
+	"currency": "ZAR"
+}

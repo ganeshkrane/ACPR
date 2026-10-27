@@ -1,0 +1,192 @@
+<mvc:View controllerName="invictusbs.ui5.inventory.approve.collectivepr.controller.Home"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+
+	<Page id="pgApproveRequisitions" title="Approve Collective Purchase Requisitions" showNavButton="true" enableScrolling="true">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<!-- Filter Bar -->
+				<Panel class="sapUiResponsiveMargin" backgroundDesign="Transparent">
+					<l:Grid id="idFilterGrid" defaultSpan="XL2 L2 M4 S12" hSpacing="1" vSpacing="1">
+						<VBox id="idFilterPR">
+							<Label text="Purchase Requisition" />
+							<MultiComboBox id="idPrNumber" width="100%" placeholder="Select Purchase Requisition" items="{PRFilter>/results}">
+								<core:Item key="{PRFilter>Banfn}" text="{PRFilter>Banfn}" />
+							</MultiComboBox>
+						</VBox>
+
+						<VBox id="idFilterPurchaseGroup">
+							<Label text="Purchase Group" />
+							<MultiComboBox id="idPurchaseGroup" placeholder="Select Group" items="{Z_PR_APPROVAL_SRV>/PurchaseGroupSet}">
+								<core:Item key="{Z_PR_APPROVAL_SRV>Ekgrp}" text="{Z_PR_APPROVAL_SRV>Ekgrp} - {Z_PR_APPROVAL_SRV>Eknam}" />
+							</MultiComboBox>
+						</VBox>
+
+						<VBox id="idFilterReleaseGroup">
+							<Label text="Release Group" />
+							<MultiComboBox id="idReleaseGroup" width="100%" forceSelection="false" items="{Z_PR_APPROVAL_SRV>/ReleaseGroupSet}">
+
+								<core:Item key="{Z_PR_APPROVAL_SRV>Frggr}" text="{Z_PR_APPROVAL_SRV>Frggr} - {Z_PR_APPROVAL_SRV>Frggt}" />
+							</MultiComboBox>
+						</VBox>
+
+						<VBox id="idFilterReleaseCode">
+							<Label text="Release Code" />
+							<MultiComboBox id="idReleaseCode" width="100%" forceSelection="false" items="{Z_PR_APPROVAL_SRV>/ReleaseCodeSet}">
+
+								<core:Item key="{Z_PR_APPROVAL_SRV>Frgco}" text="{Z_PR_APPROVAL_SRV>Frgco} - {Z_PR_APPROVAL_SRV>Frgct}" />
+							</MultiComboBox>
+						</VBox>
+
+						<VBox id="idFilterPlant">
+							<Label text="Plant" />
+
+							<MultiComboBox id="idPlant" forceSelection="false" width="100%" items="{Z_PR_APPROVAL_SRV>/PlantSet}">
+
+								<core:Item key="{Z_PR_APPROVAL_SRV>Werks}" text="{Z_PR_APPROVAL_SRV>Werks} - {Z_PR_APPROVAL_SRV>Name1}" />
+
+							</MultiComboBox>
+						</VBox>
+
+						<VBox id="idFilterVendor">
+							<Label text="Vendor" />
+							<MultiComboBox id="idVendor" width="100%" forceSelection="false" items="{Z_PR_APPROVAL_SRV>/VendorSet}">
+
+								<core:Item key="{Z_PR_APPROVAL_SRV>Lifnr}" text="{Z_PR_APPROVAL_SRV>Lifnr} - {Z_PR_APPROVAL_SRV>Name1}" />
+							</MultiComboBox>
+						</VBox>
+
+					</l:Grid>
+
+					<Toolbar class="sapUiTinyMarginTop">
+						<ToolbarSpacer />
+						<Button id="idBtnClear" text="Clear" type="Transparent" press="onClearFilters" />
+						<Link text="Adapt Filters" press="onAdaptFilters" />
+						<Button id="idBtnGo" text="Go" type="Emphasized" press="onGoPress" />
+					</Toolbar>
+
+				</Panel>
+				<Table id="idTblRequisitions" mode="MultiSelect" selectionChange="onSelectionChange" alternateRowColors="true" noDataText="No purchase requisitions found">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="Purchase Requisitions to Approve ({PRResult>/totalCount})" />
+							<ToolbarSpacer />
+							<Button id="idBtnApprove" text="Approve" icon="sap-icon://accept" type="Accept" press="onApprove" />
+							<Button id="idBtnReject" text="Reject" icon="sap-icon://decline" type="Reject" press="onReject" />
+							<!-- <Button icon="sap-icon://action-settings" press="onSettingsPress" />
+							<Button icon="sap-icon://download" press="onDownloadPress" /> -->
+						</Toolbar>
+					</headerToolbar>
+
+					<columns>
+
+						<Column>
+							<header>
+								<Label text="Requisition" />
+							</header>
+						</Column>
+
+						<Column hAlign="Center">
+							<header>
+								<Label text="Doc Type" />
+							</header>
+						</Column>
+
+						<Column hAlign="Center">
+							<header>
+								<Label text="Item" />
+							</header>
+						</Column>
+
+						<Column>
+							<header>
+								<Label text="Material" />
+							</header>
+						</Column>
+
+						<Column>
+							<header>
+								<Label text="Text Details" />
+							</header>
+						</Column>
+
+						<Column hAlign="End">
+							<header>
+								<Label text="Quantity" />
+							</header>
+						</Column>
+
+						<Column hAlign="End">
+							<header>
+								<Label text="Net Value" />
+							</header>
+						</Column>
+
+						<Column>
+							<header>
+								<Label text="Vendor" />
+							</header>
+						</Column>
+
+						<Column hAlign="Center">
+							<header>
+								<Label text="Plant" />
+							</header>
+						</Column>
+
+						<Column hAlign="Center">
+							<header>
+								<Label text="Delivery Date" />
+							</header>
+						</Column>
+
+						<Column>
+							<header>
+								<Label text="Attachments" />
+							</header>
+						</Column>
+
+					</columns>
+
+					<items>
+
+					</items>
+
+				</Table>
+
+				<!-- Footer Total -->
+				<Toolbar class="sapUiSmallMarginTop">
+					<ToolbarSpacer />
+					<Label text="Total Net Value:" class="sapUiTinyMarginEnd" />
+					<ObjectNumber id="idTotalNetValue" number="0" unit="" emphasized="true" state="Information"/>
+					<ToolbarSpacer />
+				</Toolbar>
+
+
+			</VBox>
+
+			<VBox>
+
+				<HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
+
+					<Button id="idBtnFirst" icon="sap-icon://media-rewind" tooltip="First Page" press=".onFirstPage" class="sapUiTinyMarginEnd" />
+
+					<Button id="idBtnPrevious" icon="sap-icon://navigation-left-arrow" tooltip="Previous Page" press=".onPreviousPage" class="sapUiTinyMarginEnd" />
+					<HBox id="idPageNumbers" alignItems="Center" class="sapUiTinyMarginEnd" />
+					<Button id="idBtnNext" icon="sap-icon://navigation-right-arrow" tooltip="Next Page" press=".onNextPage" class="sapUiTinyMarginEnd" />
+
+					<Button id="idBtnLast" icon="sap-icon://media-forward" tooltip="Last Page" press=".onLastPage" />
+
+				</HBox>
+
+			</VBox>
+
+		</content>
+
+	</Page>
+
+</mvc:View>

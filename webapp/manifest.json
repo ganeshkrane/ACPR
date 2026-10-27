@@ -1,0 +1,108 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "invictusbs.ui5.inventory.approve.collectivepr",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "ach": "CA-UI5-DOC",
+    "sourceTemplate": {
+      "id": "@sap/ux-app-migrator:freestyle",
+      "version": "1.25.0",
+      "toolsId": "2298a87e-ee56-4a0d-8ea0-67d0fdbaf5b6"
+    },
+    "dataSources": {
+      "Z_PR_APPROVAL_SRV": {
+        "uri": "/sap/opu/odata/sap/Z_PR_APPROVAL_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/Z_PR_APPROVAL_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_bluecrystal"
+    ]
+  },
+  "resources": {
+    "css": [
+      {
+        "uri": "css/style.css"
+      }
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": "invictusbs.ui5.inventory.approve.collectivepr.view.App",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "invictusbs.ui5.inventory.approve.collectivepr.i18n.i18n"
+        }
+      },
+      "Z_PR_APPROVAL_SRV": {
+        "dataSource": "Z_PR_APPROVAL_SRV",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "invictusbs.ui5.inventory.approve.collectivepr.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "bypassed": {
+          "target": "notFound"
+        }
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "appHome",
+          "target": "home"
+        },
+        {
+          "pattern": "nca",
+          "name": "nca",
+          "target": "nca"
+        }
+      ],
+      "targets": {
+        "home": {
+          "viewName": "Home",
+          "transition": "slide"
+        },
+        "notFound": {
+          "viewName": "NotFound",
+          "transition": "show"
+        }
+      }
+    }
+  }
+}

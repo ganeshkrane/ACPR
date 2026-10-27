@@ -1,0 +1,54 @@
+{
+  "header": {
+    "purchaseOrder": "4500001234",
+    "docType": "NB",
+    "supplier": "10000001",
+    "supplierName": "ABC Supplier",
+    "destSite": "1001",
+    "destSiteDesc": "Store 1001",
+    "trfReason": "CLEARANCE",
+    "createdBy": "JYOTI",
+    "creationDate": "2026-06-11"
+  },
+
+  "lineItems": [
+    {
+      "itmNo": "00010",
+      "accAssCat": "K",
+      "itemCat": "N",
+      "artnumber": "100000001",
+      "description": "Nike T-Shirt Blue",
+      "qty": "5",
+      "uom": "EA",
+      "returnFlag": true,
+      "netValue": "299.00",
+      "storageLoc": "0001",
+      "delDate": "20260611"
+    },
+    {
+      "itmNo": "00020",
+      "accAssCat": "K",
+      "itemCat": "N",
+      "artnumber": "100000002",
+      "description": "Adidas Shoes",
+      "qty": "2",
+      "uom": "EA",
+      "returnFlag": false,
+      "netValue": "1499.00",
+      "storageLoc": "0001",
+      "delDate": "20260611"
+    }
+  ],
+
+  "history": [
+    {
+      "postingDate": "2026-06-10",
+      "entryDate": "2026-06-10",
+      "entryTime": "12:45:22",
+      "movType": "101",
+      "matDocNo": "5000012345",
+      "qty": "5",
+      "amount": "1495.00"
+    }
+  ]
+}

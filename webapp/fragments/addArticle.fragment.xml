@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<TableSelectDialog noDataText="No Products Found" id="dlgArtSelect"
+		title="Select Product" search="handleSearchArtSel" confirm="handleCloseArtSel"
+		close="handleCloseArtSel"
+		items="{path : 'artList>/d/results/'}">
+
+		<ColumnListItem>
+			<cells>
+				<ObjectIdentifier title="{path:'artList>articleNumber'}" text="{path:'artList>description'}" />
+				
+
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Article" />
+				</header>
+			</Column>
+			
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

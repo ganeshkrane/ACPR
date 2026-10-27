@@ -1,0 +1,274 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "invictusbs.ui5.inventory.approve.collectivepr",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "CA-UI5-DOC"
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_bluecrystal"]
+  	},
+  	
+  	"resources": {
+		 			 "css": [
+								{
+			  						 "uri": "css/style.css"
+								}
+		  					]
+		},
+  	
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "invictusbs.ui5.inventory.approve.collectivepr.view.App",
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": { }
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "invictusbs.ui5.inventory.approve.collectivepr.i18n.i18n"
+				}
+			}
+		},
+			"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "invictusbs.ui5.inventory.approve.collectivepr.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				}
+			},
+		"routes": [{
+				"pattern": "",
+				"name": "appHome",
+				"target": "home"
+			}, 
+			
+			{
+				"pattern": "nca",
+				"name": "nca",
+				"target": "nca"
+			}, 
+			
+			{
+				"pattern": "qckCredit",
+				"name": "qckCredit",
+				"target": "qckCredit"
+			}, 
+			
+			
+			{
+				"pattern": "document/{doc}", 
+				"name": "document",
+				"target": "document"
+			},						
+			
+			{
+				"pattern": "qoffer",
+				"name": "qoffer",
+				"target": "qoffer"
+			}, 
+			
+			{
+				"pattern": "qckCash",
+				"name": "qckCash",
+				"target": "qckCash"
+			}, 
+			
+			{
+				"pattern": "affordability/{dealType}", 
+				"name": "affordability",
+				"target": "affordability"
+			},	
+			
+			
+			{
+				"pattern": "foffer", 
+				"name": "foffer",
+				"target": "foffer"
+			},	
+			
+			{
+				"pattern": "completeSaved",
+				"name": "completeSaved",
+				"target": "completeSaved"
+			}, 
+			
+			{
+				"pattern": "qckNonCredit",
+				"name": "qckNonCredit",
+				"target": "qckNonCredit"
+			}, 		
+			
+			
+			{
+				"pattern": "quote", 
+				"name": "quote",
+				"target": "quote"
+			},
+			
+			{
+				"pattern": "cashQta", 
+				"name": "cashQta",
+				"target": "cashQta"
+			},
+			
+			{
+				"pattern": "cellQta", 
+				"name": "cellQta",
+				"target": "cellQta"
+			},
+			
+			{
+							"pattern": "doclist",
+							"name": "doclist",
+							"target": "doclist"
+			},
+			
+			{
+							"pattern": "disclosure",
+							"name": "disclosure",
+							"target": "disclosure"
+			},
+			
+			{
+							"pattern": "debicheck",
+							"name": "debicheck",
+							"target": "debicheck"
+			},
+			
+			{
+							"pattern": "upldocs/{docPath}",
+							"name": "upldocs",
+							"target": "upldocs"
+			},
+			{
+							"pattern": "docDisplay/{docPath},{docType}",
+							"name": "docDisplay",
+							"target": "docDisplay"
+			}
+			
+			],
+			"targets": {
+				"home": {
+					"viewName": "Home",					
+					"transition": "slide"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"transition": "show"
+				},
+				
+				"nca": {
+					"viewName": "Nca",					
+					"transition": "show"
+				},
+				
+				"completeSaved": {
+					"viewName": "CompleteSaved",					
+					"transition": "show"
+				},
+								
+				
+				"qckCredit": {
+					"viewName": "QuickCredit",					
+					"transition": "show"
+				},
+				
+				"qckNonCredit": {
+					"viewName": "QuickNonCredit",					
+					"transition": "show"
+				},
+				
+				
+				"qckCash": {
+					"viewName": "QuickCash",					
+					"transition": "show"
+				},
+				
+				"qoffer": {
+					"viewName": "QOffer",
+					"transition": "flip"
+				},
+				
+				"affordability": {
+					"viewName": "Affordability",
+					"transition": "slide"
+				},					
+				
+				"foffer": {
+					"viewName": "FOffer",
+					"transition": "flip"
+				},
+				"document": {
+					"viewName": "Document",
+					"transition": "flip"
+				},	
+							
+				"quote": {
+					"viewName": "Quote",
+					"transition": "flip"
+				},	
+					
+							
+				"cashQta": {
+					"viewName": "CashQta",
+					"transition": "flip"
+				},		
+				
+				"cellQta": {
+					"viewName": "CellQta",
+					"transition": "flip"
+				},		
+						
+				"doclist": {
+						"viewName": "DocList",
+					    "transition": "flip"
+				},
+				
+				"disclosure": {
+						"viewName": "Disclosures",
+					    "transition": "flip"
+				},
+				
+				
+				"debicheck": {
+						"viewName": "DebiCheck",
+					    "transition": "flip"
+				},
+				
+				"upldocs": {
+						"viewName": "Upload",						
+					"transition": "flip"
+				},
+				
+				"docDisplay": {
+						"viewName": "DocDisplay",						
+					"transition": "flip"
+				}
+			}
+		}
+	}
+}

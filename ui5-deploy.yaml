@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: invictusbs.ui5.inventory.approve.collectivepr
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: GWDEV_BAS_258886
+          url: http://gwdevs:4431
+          client: '310'
+        app:
+          name: ZACPR
+          description: Approve Collective Purchase Requisition App
+          package: ZJD_UI5
+          transport: ND1K904987
+        exclude:
+          - /test/
+          - /localService/

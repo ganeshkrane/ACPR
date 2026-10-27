@@ -1,0 +1,4 @@
+<mvc:View controllerName="invictusbs.ui5.inventory.approve.collectivepr.controller.App"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<App id="app"/>
+</mvc:View>

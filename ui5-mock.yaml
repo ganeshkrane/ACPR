@@ -1,0 +1,50 @@
+specVersion: "4.0"
+metadata:
+  name: invictusbs.ui5.inventory.approve.collectivepr
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false
+        backend:
+          - path: /sap
+            url: http://gwdevs:4431
+            client: '310'
+            destination: GWDEV_BAS_BASICAUTH_251031
+          - path: /sap/opu/odata/sap/Z_PR_APPROVAL_SRV/
+            url: http://gwdevs:4431
+            client: '310'
+            destination: GWDEV_BAS_258886
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: invictusbs.ui5.inventory.approve.collectivepr
+        ui5Theme: sap_fiori_3
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/Z_PR_APPROVAL_SRV
+            metadataPath: ./webapp/localService/Z_PR_APPROVAL_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/Z_PR_APPROVAL_SRV/data
+            generateMockData: true
+        annotations: []
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
