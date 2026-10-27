@@ -185,6 +185,95 @@
 
 			</VBox>
 
+			<!-- Email Notifications Table Section -->
+			<VBox class="sapUiSmallMargin">
+				<Panel class="sapUiResponsiveMargin" backgroundDesign="Transparent" expandable="true" expanded="true">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="Email Notifications" />
+							<ToolbarSpacer />
+							<Button id="idBtnRefreshEmails" icon="sap-icon://refresh" text="Refresh" type="Transparent" press="onRefreshEmailNotifications" />
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<Table id="idTblEmailNotifications" items="{Z_PR_APPROVAL_SRV>/EmailNotificationSet}" alternateRowColors="true" noDataText="No email notifications found">
+							<columns>
+								<Column width="9rem">
+									<header>
+										<Label text="Purch. Req." />
+									</header>
+								</Column>
+								<Column width="5rem" hAlign="Center">
+									<header>
+										<Label text="Item" />
+									</header>
+								</Column>
+								<Column width="6rem" hAlign="Center">
+									<header>
+										<Label text="Doc Type" />
+									</header>
+								</Column>
+								<Column width="14rem">
+									<header>
+										<Label text="E-Mail Address" />
+									</header>
+								</Column>
+								<Column width="9rem" hAlign="Center">
+									<header>
+										<Label text="Release Status" />
+									</header>
+								</Column>
+								<Column width="10rem" hAlign="Center">
+									<header>
+										<Label text="Email Type" />
+									</header>
+								</Column>
+								<Column width="8rem" hAlign="Center">
+									<header>
+										<Label text="Email Status" />
+									</header>
+								</Column>
+								<Column width="6rem" hAlign="Center">
+									<header>
+										<Label text="Retry Count" />
+									</header>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<header>
+										<Label text="Error Message" />
+									</header>
+								</Column>
+								<Column width="12rem" hAlign="Center">
+									<header>
+										<Label text="Last Attempt" />
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{Z_PR_APPROVAL_SRV>Banfn}" />
+										<Text text="{Z_PR_APPROVAL_SRV>Bnfpo}" />
+										<Text text="{Z_PR_APPROVAL_SRV>DocType}" />
+										<Text text="{Z_PR_APPROVAL_SRV>Recipient}" />
+										<ObjectStatus
+											text="{Z_PR_APPROVAL_SRV>ReleaseStatus}"
+											state="{= ${Z_PR_APPROVAL_SRV>ReleaseStatus} === 'Approved' ? 'Success' : ${Z_PR_APPROVAL_SRV>ReleaseStatus} === 'Rejected' ? 'Error' : 'Warning'}" />
+										<Text text="{Z_PR_APPROVAL_SRV>EmailType}" />
+										<ObjectStatus
+											text="{Z_PR_APPROVAL_SRV>EmailStatus}"
+											state="{= ${Z_PR_APPROVAL_SRV>EmailStatus} === 'Sent' ? 'Success' : ${Z_PR_APPROVAL_SRV>EmailStatus} === 'Failed' ? 'Error' : 'None'}" />
+										<Text text="{Z_PR_APPROVAL_SRV>RetryCount}" />
+										<Text text="{= ${Z_PR_APPROVAL_SRV>ErrorMessage} ? ${Z_PR_APPROVAL_SRV>ErrorMessage} : '-'}" />
+										<Text text="{Z_PR_APPROVAL_SRV>LastAttempt}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Panel>
+			</VBox>
+
 		</content>
 
 	</Page>
